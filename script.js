@@ -1,4 +1,6 @@
 'use strict'
+//login details
+// rd 1111, pk 2222, stw 3333, js 4444
 
 // Data
 const account1 = {
@@ -58,7 +60,6 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 //!========================================================== Functions
-//functions ==>
 
 const displayMovements = function (movements, sort =false) {
     containerMovements.innerHTML = '';
@@ -125,7 +126,7 @@ const displayMovements = function (movements, sort =false) {
     calcDisplaySummary(acc);
   };
 
-  //todo================================== Event handlers
+  //!================================== Event handlers
 let currentAccount;
 
 btnLogin.addEventListener('click', function (e) {
@@ -174,6 +175,21 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }
+});
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', function (e) {
