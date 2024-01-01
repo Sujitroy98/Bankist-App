@@ -1,4 +1,4 @@
-import 'core-js/actual'
+
 
 //!--------------login details------------------
 // js 1111, jd 2222, kr 3333, sr 4444
